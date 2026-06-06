@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skin by Rachel Nicole</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Mango via CDN -->
+<style>
+@font-face{font-family:'Mango';src:url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/mangogrotesk/MangoGrotesque-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Mango';src:url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/mangogrotesk/MangoGrotesque-Regular.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+</style>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+:root{
+  --w:#faf9f4;
+  --w2:#f3eed7;
+  --w3:#ece5c4;
+  --fig:#6f271f;
+  --fig2:#9b4a38;
+  --fig3:#c99080;
+  --terra:#6f271f;
+  --wine:#4a1810;
+  --ink:#2a1810;
+  --mid:#7a6858;
+  --muted:#a89880;
+  --border:#dfd6a4;
+  --gold:#dfd6a4;
+  --gold2:#c8be80;
+  /* light warm backgrounds */
+  --dark1:#f3eed7;
+  --dark2:#ece5c4;
+}
+
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;background:var(--w);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── TYPE SYSTEM ── */
+/* Mango: expressive accent moments — italic headings, prices, quotes */
+/* Helvetica Neue: all UI, labels, body, navigation */
+.mango{font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400}
+.h-caps{font-size:clamp(2.8rem,5.5vw,5.2rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.06em;text-transform:uppercase;line-height:1.0;color:var(--ink)}
+.h-caps-md{font-size:clamp(1.8rem,3vw,3rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.08em;text-transform:uppercase;line-height:1.05;color:var(--ink)}
+/* eyebrow labels */
+.label{font-size:0.55rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--muted);display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+/* body */
+.body-text{font-size:0.84rem;line-height:2.05;color:var(--mid);font-weight:300}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:0.12s}.d2{transition-delay:0.24s}.d3{transition-delay:0.36s}
+
+/* ── NAV ── */
+nav{position:fixed;inset:0 0 auto;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3.5rem;transition:background 0.4s}
+nav.s{background:rgba(250,249,247,0.96);backdrop-filter:blur(12px)}
+.n-name{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400}
+.n-links{list-style:none;display:flex;gap:2.5rem;align-items:center}
+.n-links a{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.n-links a:hover{color:var(--ink)}
+.n-book{color:var(--fig) !important;border-bottom:1px solid var(--gold)}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:55% 45%;min-height:100vh}
+.hl{display:flex;flex-direction:column;justify-content:flex-end;padding:0 4rem 6rem 3.5rem;padding-top:10rem;background:var(--w)}
+.hl-pre{font-size:0.55rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--terra);margin-bottom:3rem;display:flex;align-items:center;gap:1.2rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.hl-pre::before{content:'';width:24px;height:1px;background:var(--terra);display:block;flex-shrink:0}
+.hl-h{font-size:clamp(1.8rem,3.2vw,3rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.08em;text-transform:uppercase;line-height:1.1;color:var(--ink);margin-bottom:3.5rem}
+.hl-h em{font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);text-transform:none;letter-spacing:0.02em;font-size:1.15em}
+.hl-btn{display:inline-block;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding-bottom:0.4rem;border-bottom:1px solid var(--ink);transition:color 0.2s,border-color 0.2s;align-self:flex-start;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.hl-btn:hover{color:var(--fig);border-color:var(--fig)}
+.hr{position:relative;overflow:hidden;background:var(--w3)}
+.hr-photo{width:100%;height:100%;position:relative;overflow:hidden}
+.hr-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(100%) contrast(0.9) brightness(1.05)}
+.hr-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(61,40,48,0.2) 100%);pointer-events:none;z-index:1}
+.hr-photo::before{content:'';position:absolute;inset:0;z-index:2;opacity:0.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hr-loc{position:absolute;bottom:2.5rem;right:2.5rem;z-index:2;font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(26,19,24,0.32);writing-mode:vertical-rl;font-weight:300}
+.hr-num{position:absolute;top:2.5rem;left:2.5rem;z-index:2;background:rgba(250,249,244,0.92);padding:1rem 1.4rem;border-left:2px solid var(--gold)}
+.hr-num span:first-child{display:block;font-size:1.5rem;font-weight:200;color:var(--fig);line-height:1}
+.hr-num span:last-child{display:block;font-size:0.48rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);margin-top:5px;font-weight:300}
+
+.ticker{overflow:hidden;background:#6f271f;padding:0.85rem 0}
+.t-track{display:inline-flex;animation:tick 28s linear infinite;white-space:nowrap}
+.t-i{font-size:0.95rem;font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:rgba(250,249,247,0.5);padding:0 2.2rem;letter-spacing:0.02em}
+.t-sep{color:var(--fig3);opacity:0.55;padding:0 0.3rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── STATEMENT ── */
+.statement{padding:8rem 3.5rem;display:grid;grid-template-columns:1fr 2fr;gap:4rem;border-bottom:1px solid var(--border)}
+.st-body{font-size:clamp(1.4rem,2.3vw,2rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;line-height:1.55;color:var(--ink);letter-spacing:0.01em}
+.st-body em{font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);font-size:1.08em;letter-spacing:0}
+
+/* ── ABOUT ── */
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:85vh}
+.about-photos{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--gold)}
+.ap-big{grid-row:span 2;overflow:hidden}
+.ap-sm1{overflow:hidden}
+.ap-sm2{overflow:hidden}
+.ap-big img,.ap-sm1 img,.ap-sm2 img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%) contrast(0.88) brightness(1.06);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.about-photos:hover .ap-big img{transform:scale(1.03)}
+.about-content{display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem 6rem 5rem}
+.about-h{margin-bottom:2.5rem;margin-top:1.5rem}
+.about-p{font-size:0.84rem;line-height:2.05;color:var(--mid);margin-bottom:1.4rem;max-width:380px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.about-link{font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--fig);text-decoration:none;display:inline-flex;align-items:center;gap:0.8rem;margin-top:1.5rem;transition:gap 0.2s;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.about-link:hover{gap:1.2rem}
+.about-link::after{content:'→'}
+
+/* ── SERVICES ── */
+.services{padding:8rem 3.5rem;background:var(--w2)}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.svc-intro{font-size:0.82rem;line-height:2;color:var(--mid);padding-top:0.5rem;max-width:380px;font-weight:300}
+.svc-group{margin-bottom:3.5rem}
+.svc-group-label{font-size:0.52rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--muted);padding-bottom:1.4rem;display:block;border-bottom:1px solid var(--border);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.svc-item{display:grid;grid-template-columns:1fr auto;align-items:end;padding:2.2rem 0;border-bottom:1px solid var(--border);text-decoration:none;gap:2rem;transition:opacity 0.2s}
+.svc-item:hover{opacity:0.7}
+.svc-item-left{display:flex;flex-direction:column;gap:0.55rem}
+.svc-item-name{font-size:0.85rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);line-height:1.15;transition:color 0.2s}
+.svc-item:hover .svc-item-name{color:var(--fig)}
+.svc-item-desc{font-size:0.74rem;line-height:1.75;color:var(--muted);max-width:520px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.svc-item-right{display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;flex-shrink:0}
+.svc-item-price{font-size:1rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;color:var(--fig);letter-spacing:0.04em}
+.svc-item-dur{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.svc-item-arrow{font-size:0.65rem;color:var(--muted);opacity:0;transform:translateX(-4px);transition:opacity 0.2s,transform 0.2s}
+.svc-item:hover .svc-item-arrow{opacity:1;transform:none}
+.svc-footer{margin-top:4rem;display:flex;gap:2.5rem;align-items:center}
+.svc-footer-note{font-size:0.72rem;line-height:1.8;color:var(--muted);font-weight:300}
+.btn-line{font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding-bottom:0.4rem;border-bottom:1px solid var(--ink);display:inline-block;transition:color 0.2s,border-color 0.2s;white-space:nowrap;font-weight:300}
+.btn-line:hover{color:var(--fig);border-color:var(--fig)}
+.btn-line-fig{color:var(--fig);border-color:var(--fig3)}
+.btn-line-fig:hover{color:var(--wine);border-color:var(--wine)}
+
+/* ── FULL BLEED QUOTE — lighter overlay so text pops ── */
+.fullbleed{position:relative;min-height:56vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fb-photo{position:absolute;inset:0;overflow:hidden}
+.fb-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;filter:grayscale(100%) contrast(0.85) brightness(0.75)}
+.fb-photo::before{content:'';position:absolute;inset:0;background:rgba(42,24,16,0.45);z-index:1}
+.fb-content{position:relative;z-index:1;text-align:center;padding:5rem 3.5rem;max-width:740px}
+.fb-quote{font-size:clamp(1.3rem,2.5vw,2.1rem);font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;line-height:1.65;color:#fff;margin-bottom:2rem}
+.fb-attr{font-size:0.54rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+
+
+/* ── GALLERY ── */
+.gallery{padding:8rem 3.5rem;background:var(--w)}
+.gal-top{margin-bottom:3rem;display:flex;justify-content:space-between;align-items:flex-end}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gc{overflow:hidden;position:relative;cursor:pointer}
+.gc:nth-child(1){grid-row:span 2}
+.gc:nth-child(4){grid-column:span 2}
+.gc-film{width:100%;height:100%;min-height:240px;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);overflow:hidden;position:relative}
+.gc-film img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%) contrast(0.88) brightness(1.05);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.gc:hover .gc-film img{transform:scale(1.04)}
+.gc-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(111,39,31,0.6) 0%,transparent 55%);opacity:0;transition:opacity 0.35s;display:flex;align-items:flex-end;padding:1.5rem}
+.gc:hover .gc-over{opacity:1}
+.gc-lbl{font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(250,249,247,0.9);font-weight:300}
+
+/* ── PHILOSOPHY — medium dusty bg, never dark ── */
+.philosophy{padding:8rem 3.5rem;background:var(--w2);display:grid;grid-template-columns:1fr 1fr 1fr;gap:5rem}
+.phil-n{font-size:0.54rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem;display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.phil-line{width:24px;height:1px;background:var(--gold);margin-bottom:2rem}
+.phil-h{font-size:1.05rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);line-height:1.5;margin-bottom:1.2rem}
+.phil-p{font-size:0.78rem;line-height:2;color:var(--mid);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:8rem 3.5rem;background:var(--w)}
+.test-h-wrap{margin-bottom:4rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5rem}
+.tc-quote{font-size:1.05rem;font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;line-height:1.7;color:var(--ink);margin-bottom:1.5rem}
+.tc-line{width:20px;height:1px;background:var(--gold);margin-bottom:1.2rem}
+.tc-who{font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400}
+.tc-svc{font-size:0.65rem;color:var(--fig2);margin-top:0.3rem;font-family:'Mango','Georgia',serif;font-style:italic}
+
+/* ── BOOKING ── */
+.booking{display:grid;grid-template-columns:1fr 1fr;min-height:70vh;border-top:1px solid var(--border)}
+.bk-left{background:var(--dark1);padding:7rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.bk-label{font-size:0.54rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.bk-h{font-size:clamp(2rem,4vw,3.5rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.07em;text-transform:uppercase;line-height:1.05;color:var(--ink);margin-bottom:2rem}
+.bk-h em{font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);text-transform:none;letter-spacing:0.01em;font-size:1.05em}
+.bk-p{font-size:0.8rem;line-height:2;color:var(--mid);margin-bottom:3rem;max-width:340px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.bk-details{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem}
+.bk-d-lbl{font-size:0.52rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;display:block;margin-bottom:0.2rem}
+.bk-d-val{font-size:0.8rem;color:var(--ink);line-height:1.65;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.bk-btn{font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding-bottom:0.4rem;border-bottom:1px solid var(--ink);display:inline-block;transition:border-color 0.2s,color 0.2s;align-self:flex-start;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.bk-btn:hover{color:var(--fig);border-color:var(--fig)}
+
+.bk-right{background:var(--w2);padding:7rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.bk-right-label{font-size:0.52rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;display:block;padding-bottom:1.5rem;border-bottom:1px solid var(--border);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.sq-item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:opacity 0.2s}
+.sq-item:hover{opacity:0.65}
+.sq-item:hover .sq-item-name{color:var(--fig)}
+.sq-item-name{font-size:0.78rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);transition:color 0.2s;line-height:1.3}
+.sq-item-right{display:flex;align-items:center;gap:1.4rem;flex-shrink:0}
+.sq-item-price{font-size:0.88rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;color:var(--fig)}
+.sq-item-dur{font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.sq-all{font-size:0.54rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--fig);text-decoration:none;margin-top:2.5rem;padding-bottom:0.4rem;border-bottom:1px solid var(--gold);display:inline-block;transition:border-color 0.2s;align-self:flex-start;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.sq-all:hover{border-color:var(--fig)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark2);padding:5rem 3.5rem 2.5rem}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:5rem;margin-bottom:4rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.ft-brand{font-size:0.85rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:0.5rem}
+.ft-brand-sub{font-size:0.5rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.ft-tagline{font-family:'Mango','Georgia',serif;font-style:italic;font-size:0.95rem;color:var(--mid);line-height:1.7}
+.ft-col-h{font-size:0.5rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+.ft-col a{font-size:0.72rem;font-weight:300;color:var(--mid);text-decoration:none;transition:color 0.2s;letter-spacing:0.04em}
+.ft-col a:hover{color:var(--ink)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-size:0.52rem;letter-spacing:0.12em;color:var(--muted);font-weight:300}
+.ft-social{display:flex;gap:2rem}
+.ft-social a{font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;font-weight:300}
+.ft-social a:hover{color:var(--ink)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  .n-links li:not(:last-child){display:none}
+  .hero{grid-template-columns:1fr}
+  .hl{padding:8rem 2rem 4rem;min-height:60vh}
+  .hr{min-height:55vw}
+  .statement{grid-template-columns:1fr;padding:5rem 2rem;gap:2rem}
+  .about{grid-template-columns:1fr}
+  .about-photos{min-height:65vw}
+  .about-content{padding:4rem 2rem}
+  .services{padding:5rem 2rem}
+  .svc-head{grid-template-columns:1fr;gap:1.5rem}
+  .philosophy{grid-template-columns:1fr;padding:5rem 2rem;gap:4rem}
+  .gallery{padding:5rem 2rem}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gc:nth-child(1){grid-row:span 1}
+  .gc:nth-child(4){grid-column:span 1}
+  .testimonials{padding:5rem 2rem}
+  .test-grid{grid-template-columns:1fr;gap:3.5rem}
+  .booking{grid-template-columns:1fr}
+  .bk-left,.bk-right{padding:5rem 2rem}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+  footer{padding:4rem 2rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="n-name">Skin by Rachel Nicole</a>
+  <ul class="n-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Work</a></li>
+    <li><a href="#booking" class="n-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hl">
+    <div class="hl-pre">Bellevue, Washington</div>
+    <h1 class="hl-h">Healthy skin,<br><em>elevated</em> rituals.</h1>
+    <a href="#booking" class="hl-btn">Book a treatment</a>
+  </div>
+  <div class="hr">
+    <div class="hr-photo">
+      <img src="images/hero.jpg" alt="skin care portrait">
+    </div>
+    <div class="hr-num">
+      <span>5.0 ★</span>
+      <span>Client Rating</span>
+    </div>
+    <span class="hr-loc">Bellevue · WA</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="t-track">
+    <span class="t-i">Acne Treatments</span><span class="t-sep">·</span>
+    <span class="t-i">Corrective Facials</span><span class="t-sep">·</span>
+    <span class="t-i">Signature Skin</span><span class="t-sep">·</span>
+    <span class="t-i">Microneedling</span><span class="t-sep">·</span>
+    <span class="t-i">Healthy Skin · Elevated Rituals</span><span class="t-sep">·</span>
+    <span class="t-i">Acne Treatments</span><span class="t-sep">·</span>
+    <span class="t-i">Corrective Facials</span><span class="t-sep">·</span>
+    <span class="t-i">Signature Skin</span><span class="t-sep">·</span>
+    <span class="t-i">Microneedling</span><span class="t-sep">·</span>
+    <span class="t-i">Healthy Skin · Elevated Rituals</span><span class="t-sep">·</span>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<div class="statement rv">
+  <span class="label">The approach</span>
+  <p class="st-body">Results-driven skin care rooted in science and intention. Every treatment begins with understanding your skin — its history, its patterns, <em>and where you want it to go.</em></p>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-photos">
+    <div class="ap-big"><img src="images/about-1.jpg" alt="facial treatment"></div>
+    <div class="ap-sm1"><img src="images/about-2.jpg" alt="skin close up"></div>
+    <div class="ap-sm2"><img src="images/about-3.jpg" alt="beauty portrait"></div>
+  </div>
+  <div class="about-content rv">
+    <span class="label">About Rachel</span>
+    <h2 class="about-h">
+      <div style="font-size:clamp(2rem,3.5vw,3rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.08em;text-transform:uppercase;line-height:1.05;color:var(--ink);margin-bottom:0.2rem">Meet</div>
+      <div style="font-family:'Mango','Georgia',serif;font-style:italic;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--fig);line-height:1.1">Rachel Nicole</div>
+    </h2>
+    <p class="about-p">I believe in the kind of skin care that actually changes your skin — not just for the hour you're in the treatment room, but in a way that lasts. My approach combines clinical technique with genuine curiosity about what makes your skin tick.</p>
+    <p class="about-p">Whether you're navigating acne, pigmentation, texture, or simply want to feel good in your skin — I'll build a plan around you.</p>
+    <a href="#booking" class="about-link">Book your first visit</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="svc-head rv">
+    <h2 style="font-size:clamp(2.5rem,4.5vw,4rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.06em;text-transform:uppercase;line-height:1.0;color:var(--ink)">Treatments<br><span style="font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);text-transform:none;letter-spacing:0;font-size:0.72em">&amp; services</span></h2>
+    <p class="svc-intro">Every treatment is customized. New clients begin with an in-depth consultation — always included in your first service.</p>
+  </div>
+
+  <div class="svc-group rv">
+    <span class="svc-group-label">New Clients — Start Here</span>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">New Client Acne Consultation + Treatment</span>
+        <span class="svc-item-desc">In-depth skin analysis, acne trigger review, customized corrective treatment and homecare plan</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$225</span><span class="svc-item-dur">90 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">New Client Corrective Consultation + Treatment</span>
+        <span class="svc-item-desc">Full skin analysis, customized corrective treatment, long-term skin plan and product recommendations</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$225</span><span class="svc-item-dur">90 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+  </div>
+
+  <div class="svc-group rv">
+    <span class="svc-group-label">Returning Clients</span>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">Acne Reset Treatment</span>
+        <span class="svc-item-desc">Calms inflammation, clears congestion, supports skin healing. Best for active acne and hormonal breakouts</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$150</span><span class="svc-item-dur">60 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">Signature Skin Treatment</span>
+        <span class="svc-item-desc">Fully customized corrective facial adjusted in real time — breakouts, pigmentation, dehydration, sensitivity</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$160</span><span class="svc-item-dur">60 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">Signature Skin Treatment — Extended</span>
+        <span class="svc-item-desc">More time for deeper correction, combination concerns, or a more luxurious experience</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$195</span><span class="svc-item-dur">90 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+  </div>
+
+  <div class="svc-group rv">
+    <span class="svc-group-label">Advanced Treatments</span>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="svc-item">
+      <div class="svc-item-left">
+        <span class="svc-item-name">Microneedling</span>
+        <span class="svc-item-desc">Collagen-induction therapy for scarring, texture, fine lines and overall skin quality. Recommended in a series</span>
+      </div>
+      <div class="svc-item-right"><span class="svc-item-price">$360</span><span class="svc-item-dur">80 min</span><span class="svc-item-arrow">→</span></div>
+    </a>
+  </div>
+
+  <div class="svc-footer rv">
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="btn-line">Book via Square</a>
+    <p class="svc-footer-note">New clients — please select a New Client service for your first visit. Consultations are always included.</p>
+  </div>
+</section>
+
+<!-- FULL BLEED QUOTE -->
+<div class="fullbleed">
+  <div class="fb-photo"><img src="images/fullbleed.jpg" alt="movement portrait"></div>
+  <div class="fb-content rv">
+    <p class="fb-quote">"Healthy skin is a relationship — between your skin, its history, and the right hands."</p>
+    <span class="fb-attr">Rachel Nicole · Licensed Esthetician · Bellevue, WA</span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gal-top rv">
+    <div>
+      <span class="label" style="margin-bottom:0.8rem">Client Work</span>
+      <h2 style="font-size:clamp(2rem,3.5vw,3rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)">The skin <span style="font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);text-transform:none;letter-spacing:0;font-size:1.05em">speaks</span></h2>
+    </div>
+    <a href="https://www.instagram.com/skinby.rachelnicole" target="_blank" class="btn-line btn-line-fig">@skinby.rachelnicole</a>
+  </div>
+  <div class="gal-grid">
+    <div class="gc"><div class="gc-film"><img src="images/gallery-1.jpg" alt="skin result"></div><div class="gc-over"><span class="gc-lbl">Acne Series — 6 weeks</span></div></div>
+    <div class="gc"><div class="gc-film"><img src="images/gallery-2.jpg" alt="signature facial"></div><div class="gc-over"><span class="gc-lbl">Signature Facial</span></div></div>
+    <div class="gc"><div class="gc-film"><img src="images/gallery-3.jpg" alt="corrective treatment"></div><div class="gc-over"><span class="gc-lbl">Corrective Treatment</span></div></div>
+    <div class="gc"><div class="gc-film"><img src="images/gallery-4.jpg" alt="microneedling"></div><div class="gc-over"><span class="gc-lbl">Microneedling — 3 sessions</span></div></div>
+    <div class="gc"><div class="gc-film"><img src="images/gallery-5.jpg" alt="acne reset"></div><div class="gc-over"><span class="gc-lbl">Acne Reset</span></div></div>
+    <div class="gc"><div class="gc-film"><img src="images/gallery-6.jpg" alt="studio"></div><div class="gc-over"><span class="gc-lbl">Studio · Bellevue</span></div></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="rv">
+    <span class="phil-n">01</span>
+    <div class="phil-line"></div>
+    <h3 class="phil-h">Skin that's understood, not just treated.</h3>
+    <p class="phil-p">Every skin has a story. Before anything else, I learn yours — what's driving what you see in the mirror, not just what's visible on the surface.</p>
+  </div>
+  <div class="rv d1">
+    <span class="phil-n">02</span>
+    <div class="phil-line"></div>
+    <h3 class="phil-h">Protocols built around you.</h3>
+    <p class="phil-p">No two treatments are identical. Your skin changes — your treatment should too. Every session is calibrated to where you are right now.</p>
+  </div>
+  <div class="rv d2">
+    <span class="phil-n">03</span>
+    <div class="phil-line"></div>
+    <h3 class="phil-h">Results that last.</h3>
+    <p class="phil-p">The goal isn't a temporary glow — it's a lasting shift. Through consistent treatment and the right home care, your skin gets better over time.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-h-wrap rv">
+    <span class="label" style="margin-bottom:1.2rem">Client Love</span>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:200;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)">What clients <span style="font-family:'Mango','Georgia',serif;font-style:italic;font-weight:400;color:var(--fig);text-transform:none;letter-spacing:0;font-size:1.05em">say</span></h2>
+  </div>
+  <div class="test-grid">
+    <div class="rv">
+      <p class="tc-quote">"Always leaving me with the most glowy skin and feeling confident in my own skin! She takes the time to listen to my concerns, is incredibly knowledgeable, and truly cares about helping her clients achieve their skincare goals. Every appointment feels relaxing and personalized, and I always leave feeling refreshed and radiant."</p>
+      <div class="tc-line"></div>
+      <div class="tc-who">Kennedy C.</div>
+      <div class="tc-svc">Skin by Rachel Nicole</div>
+    </div>
+    <div class="rv d1">
+      <p class="tc-quote">"She was thorough, intentional and great to chat with. Beyond helpful in providing more information on how to maintain and improve my skin care routine. The workspace was clean, relaxing and I left refreshed. I would highly recommend her services to friends and family."</p>
+      <div class="tc-line"></div>
+      <div class="tc-who">Kylie S.</div>
+      <div class="tc-svc">Skin by Rachel Nicole</div>
+    </div>
+    <div class="rv d2">
+      <p class="tc-quote">"Rachel is easy going, knowledgeable, kind, and flexible! No matter what service you are getting you are in great hands and you will see great results!"</p>
+      <div class="tc-line"></div>
+      <div class="tc-who">Sam P.</div>
+      <div class="tc-svc">Skin by Rachel Nicole</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="bk-left rv">
+    <span class="bk-label">Book Your Appointment</span>
+    <h2 class="bk-h">Let's get<br>to work on<br><em>your skin.</em></h2>
+    <p class="bk-p">New clients — please select a New Client service for your first visit. A consultation is always included, no need to book separately.</p>
+    <div class="bk-details">
+      <div class="bk-d">
+        <span class="bk-d-lbl">Location</span>
+        <span class="bk-d-val">127 Bellevue Way SE, Ste 102<br>Bellevue, WA 98004</span>
+      </div>
+      <div class="bk-d">
+        <span class="bk-d-lbl">Hours</span>
+        <span class="bk-d-val">Tue 10–7 · Thu 11–6 · Fri 10–6 · Sat 10–4</span>
+      </div>
+      <div class="bk-d">
+        <span class="bk-d-lbl">Contact</span>
+        <span class="bk-d-val">skinbyrachelnicole@gmail.com</span>
+      </div>
+    </div>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="bk-btn">Open booking page →</a>
+  </div>
+  <div class="bk-right rv d1">
+    <span class="bk-right-label">Select a service</span>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">New Client Acne Consultation + Treatment</span>
+      <div class="sq-item-right"><span class="sq-item-dur">90 min</span><span class="sq-item-price">$225</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">New Client Corrective Consultation + Treatment</span>
+      <div class="sq-item-right"><span class="sq-item-dur">90 min</span><span class="sq-item-price">$225</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">Acne Reset Treatment</span>
+      <div class="sq-item-right"><span class="sq-item-dur">60 min</span><span class="sq-item-price">$150</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">Signature Skin Treatment</span>
+      <div class="sq-item-right"><span class="sq-item-dur">60 min</span><span class="sq-item-price">$160</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">Signature Skin Treatment — Extended</span>
+      <div class="sq-item-right"><span class="sq-item-dur">90 min</span><span class="sq-item-price">$195</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-item">
+      <span class="sq-item-name">Microneedling</span>
+      <div class="sq-item-right"><span class="sq-item-dur">80 min</span><span class="sq-item-price">$360</span></div>
+    </a>
+    <a href="https://app.squareup.com/appointments/book/qkqes1si2sbvpl/LJNXMF9CTY4Y8/start" target="_blank" class="sq-all">View all availability on Square →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand">Skin by Rachel Nicole</div>
+      <span class="ft-brand-sub">Licensed Esthetician · Bellevue, WA</span>
+      <p class="ft-tagline">Healthy skin, elevated rituals.</p>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-h">Services</div>
+      <ul>
+        <li><a href="#services">New Client Acne</a></li>
+        <li><a href="#services">New Client Corrective</a></li>
+        <li><a href="#services">Acne Reset</a></li>
+        <li><a href="#services">Signature Skin</a></li>
+        <li><a href="#services">Microneedling</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-h">Studio</div>
+      <ul>
+        <li><a href="#about">About Rachel</a></li>
+        <li><a href="#gallery">Client Work</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="mailto:skinbyrachelnicole@gmail.com">Email</a></li>
+        <li><a href="https://www.instagram.com/skinby.rachelnicole" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-copy">© 2025 Skin by Rachel Nicole · All rights reserved</span>
+    <div class="ft-social">
+      <a href="https://www.instagram.com/skinby.rachelnicole" target="_blank">Instagram</a>
+      <a href="mailto:skinbyrachelnicole@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>50),{passive:true});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:0.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
